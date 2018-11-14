@@ -1,36 +1,32 @@
 package main.scala
 
-import scala.sys.process.Process
+import com.knoldus.handlers.ImageCreation
+import com.knoldus.utils.Menu
 
-object SearchMe extends App {
+import scala.io.StdIn
+
+object SearchMe extends App with Menu{
 
   var input: String = ""
+  println(s"${Console.YELLOW} WELCOME TO !!! s Ꮎ f T Ꮃ Ꭺ Ꮢ Ꭼ  -  Ꮯ Ꭼ Ꮑ t Ꭼ Ꮢ !!!  ${Console.RESET} ")
+  println(s"${Console.YELLOW} ------ GET ALL YOUR DOCKER IMAGES CREATED NOW ------ ${Console.RESET} ")
   do {
-    println("Get all the docker images self created right now-------")
-    println("Enter 1 for Test Image")
-    println("Enter 2 for Kakfa related images")
-    println("Enter q for Test Image")
-
-    input = readLine()
-
+    menuMap.toSeq.sortBy(_._1) foreach {case (key, value) => println ("Enter " + key + "-->" + value)}
+    input = StdIn.readLine()
     input match {
       case "1" => {
-        println("Goona give you a test docker image .. Please enter the version you want-")
-        val input_for_version = readLine()
-        buildTestDockerImage(input_for_version)
+        println("Please enter your name you want in your test image")
+        val userName = StdIn.readLine()
+        println("Please enter your repo name")
+        val repoName = StdIn.readLine()
+        println("Please enter the tag name for your image")
+        val tagName = StdIn.readLine()
+        ImageCreation.buildTestDockerImage(userName,repoName,tagName)
       }
+
       case "2" => println("coming soon !!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-      case "q" => System.exit(0)
-      case _ => println("not a valid input-- please type what's in options!")
+      case "q"|"Q" => System.exit(0)
+      case _ => println(s"${Console.BLUE}${Console.BOLD} Not a valid Input-- please type what's in options! ${Console.RESET}")
     }
   } while (input != "q")
-
-  def buildTestDockerImage(version : String) = {
-    val pathToTestImage = "/home/piyush/workstation/SoftwareCenter/src/main/scala/com/knoldus/docker/testdockerfile"
-    val testDockerImageCmd = s"docker build --build-arg CONT_IMG_VER=$version $pathToTestImage"
-    println("started building your docker image")
-    Thread.sleep(2000)
-    Process(testDockerImageCmd).lineStream_!
-    println("done.. docker images to view and docker run imageiD -it /bin/bash to get into it")
-  }
 }
