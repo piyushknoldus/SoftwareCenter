@@ -1,4 +1,4 @@
 FROM ubuntu
 ARG USERNAME
 ENV USERNAME ${USERNAME:-"SoftwareCenter"}
-RUN echo "Hello" $userName
+CMD ["sh", "-c", "echo Hello: ${USERNAME}"]

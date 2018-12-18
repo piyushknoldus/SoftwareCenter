@@ -1,0 +1,28 @@
+How to Build Scala Docker Image
+
+- Before Running Code
+~/workstation/SoftwareCenter$ scala -version
+Scala code runner version 2.11.12 -- Copyright 2002-2017, LAMP/EPFL
+
+~/workstation/SoftwareCenter$ sbt sbtVersion
+[info] Loading settings for project global-plugins from idea.sbt ...
+[info] 1.2.6
+
+~/workstation/SoftwareCenter$ docker images -a
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              ea4c82dcd15a        3 weeks ago         85.8MB
+
+
+How to Run code -
+
+sbt run
+ WELCOME TO !!! s Ꮎ f T Ꮃ Ꭺ Ꮢ Ꭼ  -  Ꮯ Ꭼ Ꮑ t Ꭼ Ꮢ !!!
+ ------ GET ALL YOUR DOCKER IMAGES CREATED NOW ------
+Enter 1-->HelloMe Images
+Enter 2-->kafka Images
+Enter 3-->Cassandra Images
+Enter 4-->Scala/Sbt Images
+Enter 5-->HDFS Images
+Enter Q/q-->Quit The App
+
+- Select 4 (type 4)
