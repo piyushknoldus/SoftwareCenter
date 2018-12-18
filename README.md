@@ -1,37 +1,61 @@
-## Welcome to GitHub Pages
+# SoftwareCenter
+Get All Docker Images for your Beloved Software's.
 
-You can use the [editor on GitHub](https://github.com/piyushknoldus/SoftwareCenter/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Usage Example - 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Running the Software - 
 
-### Markdown
+sbt run
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+output - 
 
-```markdown
-Syntax highlighted code block
+ WELCOME TO !!! s Ꮎ f T Ꮃ Ꭺ Ꮢ Ꭼ  -  Ꮯ Ꭼ Ꮑ t Ꭼ Ꮢ !!!   
+ ------ GET ALL YOUR DOCKER IMAGES CREATED NOW ------  
+Enter 1-->HelloMe Images
+Enter 2-->kafka Images
+Enter 3-->Cassandra Images
+Enter 4-->Scala/Sbt Images
+Enter 5-->HDFS Images
+Enter Q/q-->Quit The App
 
-# Header 1
-## Header 2
-### Header 3
+If you select 1 (i.e Type 1 in console)
 
-- Bulleted
-- List
+1
+Please enter your name you want in your test image
+PiyushRana
+Please enter your repo name
+test
+Please enter the tag name for your image
+helloImage
 
-1. Numbered
-2. List
+Started building your docker image 
+...... Docker Image Created Successfully ......
+Type in another shell command : 'docker images' to view AND 
+to run :'docker run -it imageID /bin/bash' 
 
-**Bold** and _Italic_ and `Code` text
+Sample Docker File used to create this Image -
 
-[Link](url) and ![Image](src)
-```
+FROM ubuntu
+ARG USERNAME
+ENV USERNAME ${USERNAME:-"SoftwareCenter"}
+CMD ["sh", "-c", "echo env var: ${USERNAME}"]
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+For Testing - 
 
-### Jekyll Themes
+- Check the docker image that has been created on your Local - 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/piyushknoldus/SoftwareCenter/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+docker images -a
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test                helloImage          ea0b46c6f198        3 hours ago         85.8MB
+ubuntu              latest              ea4c82dcd15a        3 weeks ago         85.8MB
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Run image and check the ENV variable name we override i.e "PiyushRana"
+docker run -it test:helloImage
+
+Output - Hello: PiyushRana
+
+- Run image and Print your own name i.e "KnoldusSoftware"
+docker run -it -e USERNAME=KnoldusSoftware test:helloImage
+
+Output - Hello: KnoldusSoftware
