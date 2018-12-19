@@ -1,5 +1,3 @@
-package main.scala
-
 import com.knoldus.handlers.ImageCreation
 import com.knoldus.utils.Menu
 
@@ -14,7 +12,7 @@ object SearchMe extends App with Menu{
     menuMap.toSeq.sortBy(_._1) foreach {case (key, value) => println ("Enter " + key + "-->" + value)}
     input = StdIn.readLine()
     input match {
-      case "1" => {
+      case "1" =>
         println("Please enter your name you want in your test image")
         val userName = StdIn.readLine()
         println("Please enter your repo name")
@@ -22,11 +20,10 @@ object SearchMe extends App with Menu{
         println("Please enter the tag name for your image")
         val tagName = StdIn.readLine()
         ImageCreation.buildTestDockerImage(userName,repoName,tagName)
-      }
 
       case "2" => println("Kafka coming soon !!!!!!!!!!!!!!!!!!!!!!!!!!!!")
       case "3" => println("Cassandra coming soon !!!!!!!!!!!!!!!!!!!!!!!!")
-      case "4" => {
+      case "4" =>
         println("Please enter your scala version")
         val scalaVersion = StdIn.readLine()
         println("Please enter your sbt version")
@@ -36,7 +33,6 @@ object SearchMe extends App with Menu{
         println("Please enter the tag name for your image")
         val tagName = StdIn.readLine()
         ImageCreation.scalaDockerImage(scalaVersion,sbtVersion,repoName,tagName)
-      }
       case "5" => println("Hdfs coming soon !!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
       case "q"|"Q" => System.exit(0)
